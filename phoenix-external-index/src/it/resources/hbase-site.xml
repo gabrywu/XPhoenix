@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+  <property>
+    <name>hbase.defaults.for.version.skip</name>
+    <value>true</value>
+    <description>
+    Set to true to skip the 'hbase.defaults.for.version' check.
+    Setting this to true can be useful in contexts other than
+    the other side of a maven generation; i.e. running in an
+    ide.  You'll want to set this boolean to true to avoid
+    seeing the RuntimException complaint: "hbase-default.xml file
+    seems to be for and old version of HBase (@@@VERSION@@@), this
+    version is X.X.X-SNAPSHOT"
+    </description>
+  </property>
+  <property>
+    <name>external.index.metadata.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchMetaDataClient</value>
+    <description>测试使用的仅打印日志的外部元数据客户端，默认值 org.apache.phoenix.external.schema.LoggingExternalMetaDataClient</description>
+  </property>
+  <property>
+    <name>external.index.committer.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchWriterIndexCommitter</value>
+    <description>用来动态构造外部索引数据</description>
+  </property>
+  <property>
+    <name>external.index.result.iterators.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchResultIterators</value>
+  </property>
+  <property>
+    <name>external.index.batch.factory.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchBatchableIndexTableFactory</value>
+    <description>客户端维护索引</description>
+  </property>
+
+  <property>
+    <name>external.es.client.cluster-nodes</name>
+    <value>server1:9200</value>
+    <description>ElasticSearch的cluster-nodes</description>
+  </property>
+  <property>
+    <name>external.es.client.max-connection</name>
+    <value>50</value>
+  </property>
+  <property>
+    <name>external.es.client.max-connection-per-route</name>
+    <value>50</value>
+  </property>
+
+  <property>
+    <name>external.es.index.refresh.policy</name>
+    <value>IMMEDIATE</value>
+    <description>NONE,IMMEDIATE,WAIT_UNTIL。IMMEDIATE 默认</description>
+  </property>
+</configuration>

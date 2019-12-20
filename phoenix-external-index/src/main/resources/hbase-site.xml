@@ -1,0 +1,90 @@
+<configuration>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>file:///opt/hbase/data</value>
+  </property>
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>false</value>
+  </property>
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>server3</value>
+</property> 
+<property>
+  <name>hbase.client.retries.number</name>
+  <value>3</value>
+</property>
+<!-- Phoenix配置 -->
+  <property>
+    <name>hbase.regionserver.wal.codec</name>
+    <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
+  </property>
+
+  <property>
+    <name>hbase.table.sanity.checks</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>phoenix.schema.isNamespaceMappingEnabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>phoenix.schema.mapSystemTablesToNamespace</name>
+    <value>true</value>
+  </property>
+
+<!-- Phoenix索引配置 -->
+  <property>
+    <name>hbase.region.server.rpc.scheduler.factory.class</name>
+    <value>org.apache.hadoop.hbase.ipc.PhoenixRpcSchedulerFactory</value>
+    <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata updates</description>
+  </property>
+  <property>
+    <name>hbase.rpc.controllerfactory.class</name>
+    <value>org.apache.hadoop.hbase.ipc.controller.ServerRpcControllerFactory</value>
+    <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata updates</description>
+  </property>
+<!-- Phoenix ExternalIndex配置 -->
+  <property>
+    <name>external.index.metadata.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchMetaDataClient</value>
+  </property>
+  <property>
+    <name>external.index.committer.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchWriterIndexCommitter</value>
+  </property>
+  <property>
+    <name>external.index.result.iterators.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchResultIterators</value>
+  </property>
+  <property>
+    <name>external.index.batch.factory.class</name>
+    <value>org.apache.phoenix.external.index.elasticsearch.ElasticSearchBatchableIndexTableFactory</value>
+  </property>
+
+  <property>
+    <name>external.es.client.cluster-nodes</name>
+    <value>server1:9200</value>
+    <description>ElasticSearch的cluster-nodes</description>
+  </property>
+  <property>
+    <name>external.es.client.max-connection</name>
+    <value>50</value>
+  </property>
+  <property>
+    <name>external.es.client.max-connection-per-route</name>
+    <value>50</value>
+  </property>
+
+  <property>
+    <name>external.es.index.refresh.policy</name>
+    <value>NONE</value>
+    <description>NONE,IMMEDIATE,WAIT_UNTIL。IMMEDIATE 默认</description>
+  </property>
+<!-- Phoenix配置 -->
+  <property>
+    <name>phoenix.mutate.batchSize</name>
+    <value>1000</value>
+  </property>
+</configuration>
