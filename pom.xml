@@ -124,7 +124,7 @@
     <log4j.version>1.2.17</log4j.version>
     <disruptor.version>3.3.6</disruptor.version>
     <slf4j.version>${cdh.slf4j.version}</slf4j.version>
-    <protobuf-java.version>2.5.0</protobuf-java.version>
+    <protobuf-java.version>3.16.3</protobuf-java.version>
     <commons-io.version>2.1</commons-io.version>
     <commons-lang.version>2.5</commons-lang.version>
     <commons-logging.version>1.2</commons-logging.version>
